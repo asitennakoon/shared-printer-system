@@ -15,15 +15,17 @@ public class PaperTechnician extends Thread {
         Random random = new Random();
 
         for (int i = 0; i < 3; i++) {
-            try {
-                printer.refillPaper();
-                sleep(random.nextInt(1001) + 1000);
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
+            printer.refillPaper();
+
+            if (i != 2) {
+                try {
+                    sleep(random.nextInt(1001) + 1000);
+                } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
 
-        System.out.println(
-                "[PaperTechnician] Finished, packs of paper used: " + printer.getNumberOfTimesPapersRefilled());
+        System.out.printf("%n[PaperTechnician] Finished, packs of paper used: %d", printer.getNumberOfTimesPapersRefilled());
     }
 }

@@ -22,13 +22,15 @@ public class Student extends Thread {
             Document document = new Document(this.getName(), "DOC" + i, documentLength);
             printer.printDocument(document);
 
-            try {
-                sleep(random.nextInt(1001) + 1000);
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
+            if (i != 4) {
+                try {
+                    sleep(random.nextInt(1001) + 1000);
+                } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
 
-        System.out.println("[" + this.getName() + "] Finished Printing: 5 Documents, " + pageTotal + " pages");
+        System.out.printf("%n[ %s ] Finished Printing: 5 Documents, %d pages", this.getName(), pageTotal);
     }
 }

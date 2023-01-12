@@ -15,15 +15,17 @@ public class TonerTechnician extends Thread {
         Random random = new Random();
 
         for (int i = 0; i < 3; i++) {
-            try {
-                printer.replaceTonerCartridge();
-                sleep(random.nextInt(1001) + 1000);
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
+            printer.replaceTonerCartridge();
+
+            if (i != 2) {
+                try {
+                    sleep(random.nextInt(1001) + 1000);
+                } catch (InterruptedException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
 
-        System.out.println(
-                "[TonerTechnician] Finished, cartridges replaced: " + printer.getNumberOfTonerCartridgesReplaced());
+        System.out.printf("%n[TonerTechnician] Finished, cartridges replaced: %d", printer.getNumberOfTonerCartridgesReplaced());
     }
 }

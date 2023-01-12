@@ -2,10 +2,10 @@ package com.printersystem.tennakoon;
 
 public class PrintingSystem {
     public static void main(String[] args) {
-        //TODO: Discuss what reports should go here
         ThreadGroup studentGroup = new ThreadGroup("[PrintingSystem] Student Thread Group");
         System.out.println("[PrintingSystem] Thread group for students created");
-        LaserPrinter laserPrinter = new LaserPrinter("lp-TT.24", studentGroup);
+        LaserPrinter laserPrinter = new LaserPrinter(
+                "lp-TT.24", studentGroup, ServicePrinter.FULL_PAPER_TRAY, ServicePrinter.FULL_PAPER_TRAY);
         System.out.println("[PrintingSystem] LaserPrinter monitor created");
 
         Student student1 = new Student(studentGroup, "Student1", laserPrinter);
@@ -21,7 +21,6 @@ public class PrintingSystem {
         TonerTechnician tonerTechnician = new TonerTechnician(technicianGroup, "TonerTechnician", laserPrinter);
         System.out.println("[PrintingSystem] Technician threads created");
 
-        //TODO: Should starting go here or inside the run method?
         System.out.println("[PrintingSystem] Starting Student1 thread...");
         student1.start();
         System.out.println("[PrintingSystem] Starting Student2 thread...");
@@ -43,12 +42,12 @@ public class PrintingSystem {
             paperTechnician.join();
             tonerTechnician.join();
 
-            System.out.println("[PrintingSystem] Student1 Terminated: " + !student1.isAlive());
-            System.out.println("[PrintingSystem] Student2 Terminated: " + !student2.isAlive());
-            System.out.println("[PrintingSystem] Student3 Terminated: " + !student3.isAlive());
-            System.out.println("[PrintingSystem] Student4 Terminated: " + !student4.isAlive());
-            System.out.println("[PrintingSystem] PaperTechnician Terminated: " + !paperTechnician.isAlive());
-            System.out.println("[PrintingSystem] TonerTechnician Terminated: " + !tonerTechnician.isAlive());
+            System.out.printf("%n[PrintingSystem] Student1 Terminated: %s", !student1.isAlive());
+            System.out.printf("%n[PrintingSystem] Student2 Terminated: %s", !student2.isAlive());
+            System.out.printf("%n[PrintingSystem] Student3 Terminated: %s", !student3.isAlive());
+            System.out.printf("%n[PrintingSystem] Student4 Terminated: %s", !student4.isAlive());
+            System.out.printf("%n[PrintingSystem] PaperTechnician Terminated: %s", !paperTechnician.isAlive());
+            System.out.printf("%n[PrintingSystem] TonerTechnician Terminated: %s", !tonerTechnician.isAlive());
 
             System.out.println("[PrintingSystem] All threads terminated\n[PrintingSystem] " + laserPrinter);
         } catch (InterruptedException e) {
