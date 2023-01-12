@@ -49,7 +49,7 @@ public class PrintingSystem {
             System.out.printf("%n[PrintingSystem] PaperTechnician Terminated: %s", !paperTechnician.isAlive());
             System.out.printf("%n[PrintingSystem] TonerTechnician Terminated: %s", !tonerTechnician.isAlive());
 
-            System.out.println("[PrintingSystem] All threads terminated\n[PrintingSystem] " + laserPrinter);
+            System.out.println("\n[PrintingSystem] All threads terminated\n\n[PrintingSystem] " + laserPrinter);
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
         }

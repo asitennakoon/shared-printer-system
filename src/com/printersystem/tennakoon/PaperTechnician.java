@@ -17,6 +17,8 @@ public class PaperTechnician extends Thread {
         for (int i = 0; i < 3; i++) {
             printer.refillPaper();
 
+            // PaperTechnician should only sleep between each attempt to refill the paper. Therefore, after the final
+            // attempt, he/she wouldn't go in to sleep
             if (i != 2) {
                 try {
                     sleep(random.nextInt(1001) + 1000);

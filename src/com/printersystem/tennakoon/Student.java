@@ -22,6 +22,8 @@ public class Student extends Thread {
             Document document = new Document(this.getName(), "DOC" + i, documentLength);
             printer.printDocument(document);
 
+            // Student is only required to sleep between each printing request. Therefore, after the final request,
+            // he/she wouldn't go in to sleep
             if (i != 4) {
                 try {
                     sleep(random.nextInt(1001) + 1000);
@@ -31,6 +33,6 @@ public class Student extends Thread {
             }
         }
 
-        System.out.printf("%n[ %s ] Finished Printing: 5 Documents, %d pages", this.getName(), pageTotal);
+        System.out.printf("%n[%s] Finished Printing: 5 Documents, %d pages", this.getName(), pageTotal);
     }
 }
