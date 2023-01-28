@@ -5,7 +5,7 @@ public class PrintingSystem {
         ThreadGroup studentGroup = new ThreadGroup("[PrintingSystem] Student Thread Group");
         System.out.println("[PrintingSystem] Thread group for students created");
         LaserPrinter laserPrinter = new LaserPrinter(
-                "lp-TT.24", studentGroup, ServicePrinter.FULL_PAPER_TRAY, ServicePrinter.FULL_PAPER_TRAY);
+                "lp-TT.24", studentGroup, ServicePrinter.FULL_PAPER_TRAY, ServicePrinter.FULL_TONER_LEVEL);
         System.out.println("[PrintingSystem] LaserPrinter monitor created");
 
         Student student1 = new Student(studentGroup, "Student1", laserPrinter);
